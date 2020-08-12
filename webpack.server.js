@@ -14,7 +14,8 @@ const config = {
     path: path.resolve(__dirname, "build"),
   },
 
-  externals: [webpackNodeExternals()], // Do not add any packages in node_modules into final SS bundle
+  // Do not add any packages from node_modules into final SS bundle
+  externals: [webpackNodeExternals()],
 };
 
 module.exports = merge(baseConfig, config);
