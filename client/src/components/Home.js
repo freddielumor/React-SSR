@@ -1,10 +1,11 @@
 import React from "react";
+import UsersList from "./UsersList";
 
 const Home = () => {
   return (
     <div>
-      <div>HOME!</div>
-      <button onClick={() => console.log("CLICKED")}>Click Me</button>
+      <h1>HOME</h1>
+      <UsersList />
     </div>
   );
 };
