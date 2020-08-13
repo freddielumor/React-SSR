@@ -5,9 +5,9 @@ const app = express();
 
 app.use(express.static("public"));
 
-app.get("/", (req, res) => {
+app.get("*", (req, res) => {
   // Call renderer function to send HTML to browser
-  res.send(renderer());
+  res.send(renderer(req));
 });
 
 app.listen(3000, () => {
