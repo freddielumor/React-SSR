@@ -19,7 +19,11 @@ const UsersList = () => {
       <ul>
         {currentUsers &&
           currentUsers.map((user) => {
-            return <li key={user.id}>{user.name}</li>;
+            return (
+              <li key={user.id} id={user.id}>
+                {user.name}
+              </li>
+            );
           })}
       </ul>
     </div>
