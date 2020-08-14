@@ -13,7 +13,7 @@ import reducers from "./reducers";
 const middleware = [thunk];
 const store = createStore(
   reducers,
-  {},
+  window.INITIAL_STATE,
   composeWithDevTools(applyMiddleware(...middleware))
 );
 
