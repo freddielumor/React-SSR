@@ -3,15 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "../actions/index";
 import { getUsers } from "../selectors";
 
-const UsersList = () => {
+const UsersListPage = () => {
   const currentUsers = useSelector(getUsers);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchUsers());
   }, []);
-
-  if (!currentUsers) return <p>NO USERS</p>;
 
   return (
     <div>
@@ -30,4 +28,4 @@ const UsersList = () => {
   );
 };
 
-export default UsersList;
+export default UsersListPage;
