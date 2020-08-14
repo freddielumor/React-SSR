@@ -28,4 +28,6 @@ const UsersListPage = () => {
   );
 };
 
-export default UsersListPage;
+export default {
+  component: UsersListPage,
+};

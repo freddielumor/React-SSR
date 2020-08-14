@@ -5,13 +5,13 @@ import loadData from "./helpers/loadData";
 
 export default [
   {
+    ...HomePage,
     path: "/",
-    component: HomePage,
     exact: true,
   },
   {
+    ...UsersListPage,
     loadData,
     path: "/users",
-    component: UsersListPage,
   },
 ];
