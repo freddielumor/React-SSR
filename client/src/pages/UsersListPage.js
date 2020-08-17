@@ -4,7 +4,7 @@ import { fetchUsers } from "../actions/index";
 import { getUsers } from "../selectors";
 
 const UsersListPage = () => {
-  const currentUsers = useSelector(getUsers);
+  const currentUsers = useSelector(getUsers) || [];
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -15,14 +15,13 @@ const UsersListPage = () => {
     <div>
       <h2>USERS</h2>
       <ul>
-        {currentUsers &&
-          currentUsers.map((user) => {
-            return (
-              <li key={user.id} id={user.id}>
-                {user.name}
-              </li>
-            );
-          })}
+        {currentUsers.map((user) => {
+          return (
+            <li key={user.id} id={user.id}>
+              {user.name}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
