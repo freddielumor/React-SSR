@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "../actions/index";
 import { getUsers } from "../selectors";
+import loadData from "../helpers/loadData";
 
 const UsersListPage = () => {
   const currentUsers = useSelector(getUsers) || [];
@@ -29,4 +30,5 @@ const UsersListPage = () => {
 
 export default {
   component: UsersListPage,
+  loadData,
 };

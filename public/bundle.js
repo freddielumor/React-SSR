@@ -37209,7 +37209,6 @@ module.exports = function spread(callback) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_HomePage__ = __webpack_require__(97);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_UsersListPage__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__helpers_loadData__ = __webpack_require__(105);
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -37219,12 +37218,10 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-
 /* harmony default export */ __webpack_exports__["a"] = ([_objectSpread(_objectSpread({}, __WEBPACK_IMPORTED_MODULE_2__pages_HomePage__["a" /* default */]), {}, {
   path: "/",
   exact: true
 }), _objectSpread(_objectSpread({}, __WEBPACK_IMPORTED_MODULE_3__pages_UsersListPage__["a" /* default */]), {}, {
-  loadData: __WEBPACK_IMPORTED_MODULE_4__helpers_loadData__["a" /* default */],
   path: "/users"
 })]);
 
@@ -37255,6 +37252,8 @@ var HomePage = function HomePage() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions_index__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__selectors__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__helpers_loadData__ = __webpack_require__(105);
+
 
 
 
@@ -37275,7 +37274,8 @@ var UsersListPage = function UsersListPage() {
 };
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  component: UsersListPage
+  component: UsersListPage,
+  loadData: __WEBPACK_IMPORTED_MODULE_4__helpers_loadData__["a" /* default */]
 });
 
 /***/ }),
