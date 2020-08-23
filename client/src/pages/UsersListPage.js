@@ -5,7 +5,7 @@ import { getUsers } from "../selectors";
 import loadData from "../helpers/loadData";
 
 const UsersListPage = () => {
-  const currentUsers = useSelector(getUsers) || [];
+  const users = useSelector(getUsers) || [];
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const UsersListPage = () => {
     <div>
       <h2>USERS</h2>
       <ul>
-        {currentUsers.map((user) => {
+        {users.map((user) => {
           return (
             <li key={user.id} id={user.id}>
               {user.name}

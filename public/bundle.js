@@ -2700,8 +2700,8 @@ module.exports = defaults;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return FETCH_USERS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FETCH_CURRENT_USER; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return fetchUsers; });
-/* unused harmony export fetchCurrentUser */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return fetchUsers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return fetchCurrentUser; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__ = __webpack_require__(99);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__babel_runtime_helpers_asyncToGenerator__ = __webpack_require__(101);
@@ -2750,7 +2750,7 @@ var fetchCurrentUser = function fetchCurrentUser() {
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return api.get("/current-user");
+              return api.get("/current_user");
 
             case 2:
               res = _context2.sent;
@@ -37298,12 +37298,12 @@ var HomePage = function HomePage() {
 
 
 var UsersListPage = function UsersListPage() {
-  var currentUsers = Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["c" /* useSelector */])(__WEBPACK_IMPORTED_MODULE_3__selectors__["a" /* getUsers */]) || [];
+  var users = Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["c" /* useSelector */])(__WEBPACK_IMPORTED_MODULE_3__selectors__["b" /* getUsers */]) || [];
   var dispatch = Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* useDispatch */])();
   Object(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
-    dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_index__["c" /* fetchUsers */])());
+    dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions_index__["d" /* fetchUsers */])());
   }, []);
-  return /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", null, /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("h2", null, "USERS"), /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("ul", null, currentUsers.map(function (user) {
+  return /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", null, /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("h2", null, "USERS"), /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("ul", null, users.map(function (user) {
     return /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("li", {
       key: user.id,
       id: user.id
@@ -38125,9 +38125,13 @@ module.exports = _asyncToGenerator;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getUsers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getUsers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getCurrentUser; });
 var getUsers = function getUsers(state) {
   return state.users.users;
+};
+var getCurrentUser = function getCurrentUser(state) {
+  return state.auth.currentUser;
 };
 
 /***/ }),
@@ -38140,7 +38144,7 @@ var getUsers = function getUsers(state) {
  // Helper function to load data on the server side, before we render the app
 
 /* harmony default export */ __webpack_exports__["a"] = (function (store) {
-  return store.dispatch(Object(__WEBPACK_IMPORTED_MODULE_0__actions__["c" /* fetchUsers */])());
+  return store.dispatch(Object(__WEBPACK_IMPORTED_MODULE_0__actions__["d" /* fetchUsers */])());
 });
 
 /***/ }),
@@ -38203,6 +38207,8 @@ var initialState = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_config__ = __webpack_require__(77);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Header__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__actions__ = __webpack_require__(18);
+
 
 
 
@@ -38213,7 +38219,11 @@ var App = function App(_ref) {
 };
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  component: App
+  component: App,
+  loadData: function loadData(_ref2) {
+    var dispatch = _ref2.dispatch;
+    return Object(__WEBPACK_IMPORTED_MODULE_3__actions__["c" /* fetchCurrentUser */])();
+  }
 });
 
 /***/ }),
@@ -38223,14 +38233,30 @@ var App = function App(_ref) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__selectors__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions_index__ = __webpack_require__(18);
+
+
+
 
 
 
 var Header = function Header() {
-  return /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", null, /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */], {
+  var currentUser = Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["c" /* useSelector */])(__WEBPACK_IMPORTED_MODULE_3__selectors__["a" /* getCurrentUser */]);
+  var dispatch = Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* useDispatch */])();
+  Object(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
+    dispatch(Object(__WEBPACK_IMPORTED_MODULE_4__actions_index__["c" /* fetchCurrentUser */])());
+  }, []);
+  console.log("currentUser", currentUser);
+  return /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", null, /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Link */], {
     to: "/"
-  }, "React SSR"));
+  }, "React SSR"), /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", null, /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Link */], {
+    to: "/users"
+  }, "Users"), /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Link */], {
+    to: "/admins"
+  }, "Admins")));
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (Header);
@@ -38250,8 +38276,11 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { __WEBPACK_IMPORTED_MODULE_0__babel_runtime_helpers_defineProperty___default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 
+var initialState = {
+  currentUser: null
+};
 /* harmony default export */ __webpack_exports__["a"] = (function () {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {

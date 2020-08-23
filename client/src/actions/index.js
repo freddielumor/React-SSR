@@ -11,7 +11,7 @@ export const fetchUsers = () => async (dispatch, getState, api) => {
 };
 
 export const fetchCurrentUser = () => async (dispatch, getState, api) => {
-  const res = await api.get("/current-user");
+  const res = await api.get("/current_user");
 
   dispatch({
     type: FETCH_CURRENT_USER,

@@ -1,6 +1,10 @@
 import { FETCH_CURRENT_USER } from "../actions/index";
 
-export default (state = null, action) => {
+const initialState = {
+  currentUser: null,
+};
+
+export default (state = initialState, action) => {
   switch (action.type) {
     case FETCH_CURRENT_USER: {
       return {
